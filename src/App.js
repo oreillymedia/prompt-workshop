@@ -1,23 +1,102 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Grid from "@mui/material/Grid";
+import { useEffect, useState } from "react";
+import TextField from "@mui/material/TextField";
+import data from "./data";
 
 function App() {
+  const [title, setTitle] = useState("Ask the Tutor");
+  const [description, setDescription] = useState(
+    "Ask the tutor about something"
+  );
+  const [prompt, setPrompt] = useState(
+    "Tell me everything you know about $VAR$"
+  );
+  const [variable, setVariable] = useState("python");
+
+  const textboxStyle = {
+    width: "90%",
+    marginBottom: "10px",
+    marginLeft: "10px",
+    marginTop: "10px",
+  };
+
+  const ChatComponent = (props) => {
+    return (
+      <div className="chat-container">
+        <wc-orm-chat
+          title={props.title}
+          description={props.description}
+          prompt={props.prompt}
+        ></wc-orm-chat>
+      </div>
+    );
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Grid container spacing={3}>
+        <Grid item xs={12}>
+          <div className="header">
+            <h1>Prompt Workshop</h1>
+            <p>
+              A scratchpad for testing various prompts in the chat web
+              component.
+            </p>
+          </div>
+        </Grid>
+        <Grid item xs={6}>
+          <TextField
+            sx={textboxStyle}
+            label="Title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+          <br />
+          <TextField
+            sx={textboxStyle}
+            label="Description"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            multiline
+            maxRows={2}
+          />
+          <br />
+          <TextField
+            sx={textboxStyle}
+            label="$VAR$"
+            value={variable}
+            onChange={(e) => setVariable(e.target.value)}
+          />
+          <br />
+          <TextField
+            sx={textboxStyle}
+            label="Prompt"
+            value={prompt}
+            onChange={(e) => setPrompt(e.target.value)}
+            multiline
+            maxRows={12}
+          />
+        </Grid>
+        <Grid item xs={6}>
+          <ChatComponent
+            title={title}
+            description={description}
+            prompt={prompt.replace("$VAR$", variable)}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <div className="header">
+            <h1>Some Ideas to try</h1>
+            <p>
+              Inspired by{" "}
+              <a href="https://www.oneusefulthing.org/p/assigning-ai-seven-ways-of-using">
+                Assigning AI: Seven Ways of Using AI in Class
+              </a>
+            </p>
+          </div>
+        </Grid>
+      </Grid>
     </div>
   );
 }
