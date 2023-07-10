@@ -3,6 +3,7 @@ import Grid from "@mui/material/Grid";
 import { useEffect, useState } from "react";
 import TextField from "@mui/material/TextField";
 import { SuggestionsData } from "./data";
+import Button from "@mui/material/Button";
 
 function App() {
   const [title, setTitle] = useState("Ask the Tutor");
@@ -36,6 +37,7 @@ function App() {
   const Suggestions = () => {
     return (
       <div className="suggestions">
+        <h3>Suggestions</h3>
         <ul>
           {SuggestionsData.map((item) => (
             <li>
@@ -100,27 +102,18 @@ function App() {
             multiline
             maxRows={12}
           />
+          <Suggestions />
         </Grid>
         <Grid item xs={6}>
-          <Suggestions />
+          <Button sx={textboxStyle} variant="outlined">
+            Copy the embed code
+          </Button>
           <ChatComponent
             title={title}
             description={description}
             prompt={prompt.replace("$VAR$", variable)}
           />
         </Grid>
-        <Grid item xs={12}>
-          <div className="header">
-            <h1>Some Ideas to try</h1>
-            <p>
-              Inspired by{" "}
-              <a href="https://www.oneusefulthing.org/p/assigning-ai-seven-ways-of-using">
-                Assigning AI: Seven Ways of Using AI in Class
-              </a>
-            </p>
-          </div>
-        </Grid>
-        <Grid item xs={12}></Grid>
       </Grid>
     </div>
   );
