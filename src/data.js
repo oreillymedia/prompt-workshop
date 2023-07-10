@@ -1,4 +1,4 @@
-export const data = [
+export const SuggestionsData = [
   {
     title: "The Coach",
     description: "An online coach prompt",

@@ -2,7 +2,7 @@ import "./App.css";
 import Grid from "@mui/material/Grid";
 import { useEffect, useState } from "react";
 import TextField from "@mui/material/TextField";
-import data from "./data";
+import { SuggestionsData } from "./data";
 
 function App() {
   const [title, setTitle] = useState("Ask the Tutor");
@@ -29,6 +29,29 @@ function App() {
           description={props.description}
           prompt={props.prompt}
         ></wc-orm-chat>
+      </div>
+    );
+  };
+
+  const Suggestions = () => {
+    return (
+      <div className="suggestions">
+        <ul>
+          {SuggestionsData.map((item) => (
+            <li>
+              <a
+                href="#"
+                onClick={() => {
+                  setTitle(item.title);
+                  setDescription(item.description);
+                  setPrompt(item.prompt);
+                }}
+              >
+                {item.title}. {item.description}
+              </a>
+            </li>
+          ))}
+        </ul>
       </div>
     );
   };
@@ -79,6 +102,7 @@ function App() {
           />
         </Grid>
         <Grid item xs={6}>
+          <Suggestions />
           <ChatComponent
             title={title}
             description={description}
@@ -96,6 +120,7 @@ function App() {
             </p>
           </div>
         </Grid>
+        <Grid item xs={12}></Grid>
       </Grid>
     </div>
   );
