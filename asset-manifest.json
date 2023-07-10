@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/prompt-workshop/static/css/main.480f2807.css",
-    "main.js": "/prompt-workshop/static/js/main.dc7313cd.js",
+    "main.css": "/prompt-workshop/static/css/main.bab1d3e5.css",
+    "main.js": "/prompt-workshop/static/js/main.d73d93e1.js",
     "index.html": "/prompt-workshop/index.html",
-    "main.480f2807.css.map": "/prompt-workshop/static/css/main.480f2807.css.map",
-    "main.dc7313cd.js.map": "/prompt-workshop/static/js/main.dc7313cd.js.map"
+    "main.bab1d3e5.css.map": "/prompt-workshop/static/css/main.bab1d3e5.css.map",
+    "main.d73d93e1.js.map": "/prompt-workshop/static/js/main.d73d93e1.js.map"
   },
   "entrypoints": [
-    "static/css/main.480f2807.css",
-    "static/js/main.dc7313cd.js"
+    "static/css/main.bab1d3e5.css",
+    "static/js/main.d73d93e1.js"
   ]
 }
